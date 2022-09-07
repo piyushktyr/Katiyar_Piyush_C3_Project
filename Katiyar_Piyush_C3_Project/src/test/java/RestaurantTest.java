@@ -96,5 +96,25 @@ class RestaurantTest {
         int cost = restaurant.calculateOrderValue(selectedItems);
         assertEquals(0,cost);
     }
+    @Test
+    public void displayDetails_of_the_restaurant_when_invokedPrintln_thenOutputCaptorSuccess()
+    {
+        //String restaurantDetails = restaurant.displayDetails();
+        PrintStream standardOut = System.out;
+        ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStreamCaptor));
+        restaurant.displayDetails();
+
+        assertEquals("Restaurant:Amelie's cafe\n" +
+                "Location:Chennai\n" +
+                "Opening time:10:30\n" +
+                "Closing time:22:00\n" +
+                "Menu:\n" +
+                "[Sweet corn soup:119\n" +
+                ", Vegetable lasagne:269\n" +
+                ", Noodles:100\n" +
+                ", Manchurian:200\n]", outputStreamCaptor.toString()
+                .trim());
+    }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
