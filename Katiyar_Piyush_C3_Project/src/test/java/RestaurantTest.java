@@ -80,6 +80,21 @@ class RestaurantTest {
         Item first = new Item("Noodles", 100);
         assertEquals("Noodles:100\n",first.toString());
     }
-
+    @Test
+    public void calculateOrderValue_of_two_menu_items()
+    {
+        List<String> selectedItems = new ArrayList<String>();
+        selectedItems.add("Noodles");
+        selectedItems.add("Manchurian");
+        int cost = restaurant.calculateOrderValue(selectedItems);
+        assertEquals(300,cost);
+    }
+    @Test
+    public void calculateOrderValue_of_zero_menu_items()
+    {
+        List<String> selectedItems = new ArrayList<String>();
+        int cost = restaurant.calculateOrderValue(selectedItems);
+        assertEquals(0,cost);
+    }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
